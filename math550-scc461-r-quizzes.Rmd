@@ -1,0 +1,284 @@
+---
+title: "MATH550/SCC461 R quizzes"
+author: "Tom Palmer, `tom.palmer@lancaster.ac.uk`"
+institute: "Department of Mathematics and Statistics, Lancaster University"
+date: "2018/2019"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+```
+
+## R Lab 1 Quiz
+
+```{r lab1quiz, echo=FALSE}
+quiz(
+  caption = "R Lab 1 Quiz",
+  question(
+    "When R prints output in the console the first thing it prints is a square brackets with a number in. What does this number refer to?",
+    answer("The output is a vector of length 1"),
+    answer("The item printed next is the first element of output", correct = TRUE),
+    answer("This is the first line of output in the current R session"),
+    allow_retry = TRUE
+  ),
+  question(
+    "Why is the following *dangerous* coding practice?
+
+         x = 1
+         x <- 2",
+    answer("We have two objects, both called `x`"),
+    answer("We are assigning with different assignment characters"),
+    answer(
+      "We are overwriting the object x, and R will not warn us when we do this",
+      correct = TRUE
+    ),
+    allow_retry = TRUE
+  ),
+  question(
+    "What is the possible typo in this code?
+
+         x <--6",
+    answer("We meant to assign `-6` to `x`", correct = TRUE),
+    answer("You can't code `--6`"),
+    allow_retry = TRUE
+  ),
+  question(
+    "In R we can make a vector using `c(...)`. What does the `c` stand for?",
+    answer("It doesn't stand for anything"),
+    answer("Concatenation", correct = TRUE),
+    answer("Connected"),
+    allow_retry = TRUE
+  ),
+  question(
+    "If I run the following code what will R display?,
+
+         myfun <- function(a = 1){
+           return(a)
+         }
+
+         myfun()",
+    answer(
+      "Nothing because in the call to `myfun` I did not specify and argument/option"
+    ),
+    answer("`1` because `1` is the default value of `a`", correct = TRUE),
+    answer("An error message"),
+    allow_retry = TRUE
+  ),
+  question(
+    "What will be printed out when I run the following code?
+
+        a = 1
+
+        myfun <- function () {
+          a = 2
+        }
+
+        a",
+    answer("`2`, because that is what is set in the function"),
+    answer("`1`, because `a = 2` is local to the scope of the function", correct = TRUE),
+    allow_retry = TRUE
+  )
+)
+```
+
+## R Lab 2 Quiz
+
+```{r lab2quiz, echo=FALSE}
+quiz(
+  caption = "R Lab 2 Quiz",
+  question(
+    "Many of you noticed that if after running `install.packages('dplyr')` that running `filter()` gave the wrong output because you had forgotten to subsequently run `library(dplyr)`. How could you have guaranteed your code ran correctly?",
+    answer("Coded `dplyr::filter(...)`", correct = TRUE),
+    answer("Rerun `install.packages('dplyr')`"),
+    answer("Restarted the R session within RStudio"),
+    allow_retry = TRUE
+  ),
+  question(
+    "What is the main difference between a Matrix and a data.frame?",
+    answer("A Matrix cannot have column/variable names"),
+    answer("We access elements within a Matrix using the [,] notation"),
+    answer(
+      "A data.frame can have columns/variables of different types, e.g. numeric, character",
+      correct = TRUE
+    ),
+    allow_retry = TRUE
+  ),
+  question(
+    "If I have a data.frame called dat what does the following code do?
+
+      dat$var1[1:10]",
+    answer("Print rows `1:10` of the data.frame"),
+    answer(
+      "Fails with an error because you cannot access variables in a data.frame with a `$`"
+    ),
+    answer(
+      "Print elements `1:10` of the variable called `var1` in the data.frame",
+      correct = TRUE
+    ),
+    allow_retry = TRUE
+  ),
+  question(
+    "The ggplot2 package provides an alternative graphics engine for R, but what does the gg stand for?",
+    answer("Good graphics"),
+    answer("Great graphics"),
+    answer("Grammar of graphics", correct = TRUE),
+    allow_retry = TRUE
+  ),
+  question(
+    "When we start R on a Windows computer its current working directory is the 'My Documents' folder, what does the following code do?
+
+      setwd('../')",
+    answer(
+      "Sets a new working directory 1 folder level down from the current working directory"
+    ),
+    answer(
+      "Sets a new working directory 1 folder level up from the current working directory",
+      correct = TRUE
+    ),
+    answer("Leaves the working directory unchanged"),
+    allow_retry = TRUE
+  )
+)
+```
+
+## R Lab 3 Quiz
+
+```{r lab3quiz, echo=FALSE}
+quiz(
+  caption = "R Lab 3 Quiz",
+  question(
+    "We have seen that for loops are very helpful for coding iterative processes such as population growth models. When should you be wary of coding a for loop?",
+    answer("When operating on character strings"),
+    answer("When operating on data.frames"),
+    answer("When coding operations are easily vectorised", correct = TRUE),
+    allow_retry = TRUE
+  ),
+  question(
+    "What will the following R code print out?
+
+        fox <- 'dog'
+        dog <- 'fox'
+        paste('The quick brown', dog, 'jumps over the lazy', fox)",
+    answer("The quick brown fox jumps over the lazy dog", correct = TRUE),
+    answer("The quick brown dog jumps over the lazy fox"),
+    allow_retry = TRUE
+  )
+)
+```
+
+```{r, context = "server"}
+output$gcsePlot <- renderImage({
+  list(src = "theme-gcse.png",
+       width = "400",
+       height = "400")
+}, deleteFile = FALSE)
+```
+
+```{r, echo=FALSE}
+imageOutput("gcsePlot")
+```
+
+```{r lab3quizcont, echo=FALSE}
+quiz(
+  caption = "R Lab 3 Quiz continued",
+  question(
+    "What statistical theorem does the plot above demonstrate?",
+    answer("Law of large numbers", correct = TRUE),
+    answer("Central limit theorem"),
+    allow_retry = TRUE
+  ),
+  question(
+    "Are random numbers, as generated by R functions such as `runif()`, `rnorm()`, etc. truly random?",
+    answer(
+      "No, they are pseudo random because they are deterministic if you know the seed() used when the function was called",
+      correct = TRUE
+    ),
+    answer("Yes they are random number generators"),
+    allow_retry = TRUE
+  )
+)
+```
+
+## R Lab 4 and 5 Quiz
+
+```{r lab45quiz, echo=FALSE}
+quiz(
+  caption = "R Labs 4 and 5 Quiz",
+  question(
+    "In the following code what does the alpha do?
+
+        library(ggplot2)
+        ggplot(diamonds, aes(carat, price)) + geom_point(alpha = 1/10)",
+    answer("Reduces the size of the points to 1/10 their default size"),
+    answer("Makes points transparent to some degree", correct = TRUE),
+    answer("Adds a label to each point which is contained in the variable alpha"),
+    allow_retry = TRUE
+  ),
+  question(
+    "In lab 4 we saw that the lubridate package contained many useful functions for dealing with time data. What class will the following produce?
+
+          library(lubridate)
+          class(mdy('12/01/2010'))",
+    answer("Date", correct = TRUE),
+    answer("character"),
+    answer("POSIXt"),
+    allow_retry = TRUE
+  ),
+  question(
+    "What is the class of the following code?
+
+          library(lubridate)
+          class(dmy_hms('30/10/2010 20:10:43'))",
+    answer("character"),
+    answer("Date"),
+    answer("POSIXct and POSIXt", correct = TRUE),
+    allow_retry = TRUE
+  ),
+  question(
+    "What will the following code return?
+
+              library(lubridate)
+              am(now())",
+    answer("Fails with error"),
+    answer("TRUE if in the morning (before noon)", correct = TRUE),
+    allow_retry = TRUE
+  ),
+  question(
+    "Why is Coordinated Universal Time abbreviated to UTC?",
+    answer(
+      "It is a compromise between the English and French acronymns",
+      correct = TRUE
+    ),
+    answer("It is an acronym from the french."),
+    allow_retry = TRUE
+  ),
+  question(
+    "Is UTC a time zone?",
+    answer(
+      "No, although it is often interchanged with GMT and confused for one",
+      correct = TRUE
+    ),
+    answer("Yes"),
+    allow_retry = TRUE
+  ),
+  question(
+    "What does this regular expression syntax mean?
+
+                \\w{3}",
+    answer("www"),
+    answer("3 digit numbers"),
+    answer("3 letter words", correct = TRUE),
+    allow_retry = TRUE
+  ),
+  question(
+    "What does the following regular expression syntax match?
+
+                \\bat\\b",
+    answer("All instances of `at`", correct = TRUE),
+    answer("All instances of `bat`"),
+    allow_retry = TRUE
+  )
+)
+```

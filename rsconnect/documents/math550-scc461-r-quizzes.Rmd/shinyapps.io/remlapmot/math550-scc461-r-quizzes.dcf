@@ -1,0 +1,12 @@
+name: math550-scc461-r-quizzes
+title: math550-scc461-r-quizzes
+username:
+account: remlapmot
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 613869
+bundleId: 1755595
+url: https://remlapmot.shinyapps.io/math550-scc461-r-quizzes/
+when: 1544538878.99896
+asMultiple: FALSE
+asStatic: FALSE
